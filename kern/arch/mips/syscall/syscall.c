@@ -114,7 +114,15 @@ syscall(struct trapframe *tf)
 			err = 0;
 			thread_exit();
 			break;
+case SYS_add_three_integers:
+    err = sys_add_three_integers(
+        tf->tf_a0, tf->tf_a1, tf->tf_a2, &retval);
+    break;
 
+case SYS_print_int:
+    sys_print_int((const char*)tf->tf_a0, tf->tf_a1);
+    err = 0;
+    break;
 
 	    /* Add stuff here */
 
